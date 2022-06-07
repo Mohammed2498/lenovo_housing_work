@@ -23,25 +23,18 @@
                         <th>المالك</th>
                         <th>اسم البرج</th>
                         <th> الأمر</th>
-
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($apartments as $apartment)
                         <tr>
                             <td>{{ $apartment->id }}</td>
-                            <td>{{ $apartment->building_id }}</td>
+                            <td>{{ $apartment->number }}</td>
                             <td>{{ $apartment->owner }}</td>
-                            <td>{{ $building->name }}</td>
+                            <td>{{ $apartment->building_name }}</td>
                             <td>
-                                @if ($building->image)
-                                    <img src="{{ asset('storage/' . $building->image) }}" alt="" width="50px"
-                                        height="50px">
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('buildings.edit', $building->id) }}" class="btn btn-primary">تعديل</a>
-                                <form action="{{ route('buildings.destroy', $building->id) }}" method="POST">
+                                <a href="#" class="btn btn-primary">تعديل</a>
+                                <form action="{{ route('apartments.destroy', $apartment->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button style="margin-top: 10px" class="btn btn-danger" type="submit"> حذف</button>

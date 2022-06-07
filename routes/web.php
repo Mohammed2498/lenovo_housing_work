@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ApartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BuildingController;
-use App\Http\Controllers\Admin\ApartmentController;
+
 
 /*
 |--------------------------------------------------------------------------

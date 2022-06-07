@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="form-group mb-0">
                         <button class="btn btn-primary" type="submit"> اضافة</button>
-                        <a href="{{ url('/dashboard/buildings') }}" class="btn btn-secondary">رجوع</a>
+                        <a href="{{ route('buildings.index') }}" class="btn btn-secondary">رجوع</a>
                     </div>
                 </div>
             </form>

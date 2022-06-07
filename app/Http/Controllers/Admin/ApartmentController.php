@@ -16,11 +16,14 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $buildings = Building::all();
-        $apartments = Apartment::all();
+        $apartments = Apartment::leftJoin(
+            'buildings',
+            'buildings.id',
+            '=',
+            'apartments.building_id'
+        )->select('apartments.*', 'buildings.name as building_name')->get();
         return view('apartments.index', [
             'apartments' => $apartments,
-            'buildings' => $buildings
         ]);
     }
 
@@ -52,6 +55,9 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         //
+        Apartment::create($request->all());
+        return redirect()->route('apartments.index')
+            ->with('success', 'تم الاضافة بنجاح');
     }
 
     /**
