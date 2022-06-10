@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('number');
             $table->string('owner');
-            $table->unsignedBigInteger('building_id');
+            $table->unsignedBigInteger('building_id')->nullable();
             $table->foreign('building_id')->references('id')
                 ->on('buildings')->cascadeOnDelete();
             $table->timestamps();

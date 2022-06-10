@@ -12,4 +12,9 @@ class Building extends Model
         'image',
         'apartments_number', 'address', 'name', 'description'
     ];
+
+    public function apartments()
+    {
+        return $this->hasMany(Apartment::class, 'building_id', 'id');
+    }
 }

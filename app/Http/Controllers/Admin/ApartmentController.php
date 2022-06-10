@@ -16,12 +16,13 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::leftJoin(
-            'buildings',
-            'buildings.id',
-            '=',
-            'apartments.building_id'
-        )->select('apartments.*', 'buildings.name as building_name')->get();
+        // $apartments = Apartment::leftJoin(
+        //     'buildings',
+        //     'buildings.id',
+        //     '=',
+        //     'apartments.building_id'
+        // )->select('apartments.*', 'buildings.name as building_name')->get();
+        $apartments = Apartment::with('building')->get();
         return view('apartments.index', [
             'apartments' => $apartments,
         ]);
@@ -102,6 +103,6 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //  
     }
 }

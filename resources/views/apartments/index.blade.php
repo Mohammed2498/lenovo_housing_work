@@ -31,7 +31,7 @@
                             <td>{{ $apartment->id }}</td>
                             <td>{{ $apartment->number }}</td>
                             <td>{{ $apartment->owner }}</td>
-                            <td>{{ $apartment->building_name }}</td>
+                            <td>{{ $apartment->building->name }}</td>
                             <td>
                                 <a href="#" class="btn btn-primary">تعديل</a>
                                 <form action="{{ route('apartments.destroy', $apartment->id) }}" method="POST">

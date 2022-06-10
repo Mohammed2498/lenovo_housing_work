@@ -68,7 +68,11 @@ class BuildingController extends Controller
     public function show(Building $building)
     {
         //
-        return view('bulidings.show', ['building' => $building]);
+        $apartments = $building->apartments;
+        return view('bulidings.show',
+        ['building' => $building,
+        'apartments'=>$apartments
+        ]);
     }
 
     /**
