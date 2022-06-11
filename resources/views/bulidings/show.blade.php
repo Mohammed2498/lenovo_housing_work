@@ -33,7 +33,7 @@
                         <td>{{ $apartment->number }}</td>
                         <td>{{ $apartment->owner }}</td>
                         <td>
-                            <a href="#" class="btn btn-primary">تعديل</a>
+                            <a href="{{ route('apartments.edit', $apartment->id) }}" class="btn btn-primary">تعديل</a>
                             <form action="{{ route('apartments.destroy', $apartment->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')

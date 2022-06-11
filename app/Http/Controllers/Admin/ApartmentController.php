@@ -78,9 +78,10 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Apartment $apartment)
     {
-        //
+        $buildings = Building::all();
+        return view('apartments.edit', compact('apartment', 'buildings'));
     }
 
     /**
@@ -90,9 +91,11 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+        $apartment->update($request->all());
+        return redirect()->route('buildings.index')
+            ->with('success', 'تم التعديل  بنجاح');
     }
 
     /**
@@ -103,6 +106,9 @@ class ApartmentController extends Controller
      */
     public function destroy($id)
     {
-        //  
+
+        $apartment = Apartment::findOrFail($id);
+        $apartment->delete();
+        return redirect()->back()->with('success', 'تم الحذف بنجاح');
     }
 }

@@ -67,12 +67,15 @@ class BuildingController extends Controller
      */
     public function show(Building $building)
     {
-        //
+        
         $apartments = $building->apartments;
-        return view('bulidings.show',
-        ['building' => $building,
-        'apartments'=>$apartments
-        ]);
+        return view(
+            'bulidings.show',
+            [
+                'building' => $building,
+                'apartments' => $apartments
+            ]
+        );
     }
 
     /**
@@ -95,7 +98,7 @@ class BuildingController extends Controller
      */
     public function update(Request $request, Building $building)
     {
-        //
+
         $request->validate($this->rules());
         $image = $request->file('image');
         $data = $request->all();
